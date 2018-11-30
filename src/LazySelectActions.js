@@ -90,7 +90,7 @@ class LazySelectActions {
 
     loadWorker(worker) {
         
-        return new Worker(`/Content/assets/scripts/workers/${worker}.js?v=42`);
+        return new Worker(`./workers/${worker}.js`);
     }
 
     // Listen Web worker response
