@@ -1,0 +1,7 @@
+# dependencies
+/node_modules
+/package-lock.json
+
+# .css and.map files (auto generated)
+*.css
+*.css.map

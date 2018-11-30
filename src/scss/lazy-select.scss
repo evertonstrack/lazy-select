@@ -1,0 +1,203 @@
+/* 
+* lazy select
+*/
+
+/* lazy select field */
+.lazy-field{
+    width: 100%;
+    padding: 2px 0px 2px 15px;
+    text-align: left;
+    height: 35px;
+    font-size: 11px;
+    border: 2px solid #E6E6E6;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &.error {
+        border: 2px solid map_get($color-palette, 'primary');
+    }
+    
+    
+    &.isloading{
+        cursor: wait;
+
+        + .lazy-select{
+
+            &:after{
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                cursor: wait;
+                z-index: 3;
+            }
+        }
+    }
+
+    .lazy-field__icon{
+
+        &:before,
+        &:after {
+            content: "";
+            width: 0; 
+            height: 0; 
+            display: block;
+            position: absolute;
+            right: 5px;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+        }
+
+        &:before {
+            border-bottom: 3px solid #ef8c08;
+            top: 43%;
+        }
+
+        &:after {
+            border-top: 3px solid #ef8c08;
+            top: 56%;
+        }
+    }
+
+    .lazy-field__text{
+        padding-right: 12px;
+    }
+
+    .lazy-field__loader{
+        position: absolute;
+        right: 5px;
+        font-size: 18px;
+        top: 3px;
+        opacity: 0.7;
+        display: none;
+    }
+}
+
+.animated .lazy-field__loader .fa-spin-r {
+    animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+/* lazy select container */
+.lazy-select-container{
+    position: relative;
+}
+
+.lazy-select{
+    position: absolute;
+    top: 100%;
+    left: 34px;
+    width: 100%;
+    border: 1px solid #dedede;
+    background: #fff;
+    color: #333333;
+    border-radius: 5px;
+    z-index: 10000;
+    padding: 10px;
+    display: none;
+    
+    &.open{
+        display: block;
+        margin-top: 6px;
+    }
+
+    /* lazy select header */
+    .lazy-select-header {
+        clear: both;
+        overflow: hidden;
+        display: flex;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 3px;
+        margin-bottom: 3px;
+        color: black !important;
+
+        .lazy-select-header__filter {
+            display: inline-block;
+            width: 50%;
+        
+            .lazy-select-header__filter-label{
+                display: block;
+                margin-bottom: 0;
+                font-size: 11px;
+            }
+        
+            .lazy-select-header__filter-input{
+                margin-top: 4px;
+                padding: 2px 12px;
+            }
+        }
+        
+        .lazy-select-header__actions {
+            text-align: right;
+            width: 49%;
+        
+            button{
+                background: transparent;
+                border: none;
+            }
+        }
+    }
+
+    /* lazy select list */
+    .lazy-select-list{
+        height: 175px;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+
+        .lazy-select-list__item{
+            font-size: 14px;
+            color: #666666;
+            cursor: pointer;
+            font-weight: bold;
+            line-height: 23px;
+            padding: 6px 4px;
+            margin-bottom: 0;
+
+            &:hover{
+                background: hsla(0, 0%, 94%, 1);
+            }
+
+            input{
+                margin-right: 8px;
+                margin-top: -3px;
+            }
+                
+            input[type="radio"] {
+                position: relative;
+              
+                border: 2px solid map-get($color-palette, primary);
+                height: 20px;
+                width: 20px;
+                background: transparent;
+                -webkit-appearance: none;
+                border-radius: 50%;
+              
+                &:before {
+                    content: ' ';
+                    position: absolute;
+                    top: 3px;
+                    left: 3px;
+                    height: 10px;
+                    width: 10px;
+                    border-radius: 50%;
+                    background: map-get($color-palette, primary);
+                    transition: 0.125s ease-in;
+                    transform: scale(0);
+                }
+                
+                &[checked]:before {
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+}

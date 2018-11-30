@@ -1,0 +1,26 @@
+{
+  "name": "lazy-select",
+  "version": "0.0.1",
+  "description": "Select with lazy load for large data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evertonstrack/lazy-select.git"
+  },
+  "keywords": [
+    "select",
+    "custom",
+    "select",
+    "javascript",
+    "es6"
+  ],
+  "author": "everton.strack@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/evertonstrack/lazy-select/issues"
+  },
+  "homepage": "https://github.com/evertonstrack/lazy-select#readme"
+}
